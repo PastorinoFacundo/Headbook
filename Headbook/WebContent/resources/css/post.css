@@ -1,0 +1,32 @@
+body>.content>.title{
+	font-size: 50px;
+    padding-bottom: 1rem;
+    border-bottom: 2px #414141 solid;
+}
+
+form .form_row{
+	padding:11px 20px;
+}
+form .form_row>span{
+	padding: 11px 0px;
+    font-size: 24px;
+}
+form .form_row input{
+    padding: 0.5rem;
+}
+form .form_row textarea{
+	padding: 10px;
+}
+
+form .footer{
+	margin-top: 2rem;
+	padding:15px 20px;
+}
+form .footer .back_button{
+	float:left;
+}
+form .footer .submit_button{
+	float:right;
+	margin-bottom: 3rem;
+}
+

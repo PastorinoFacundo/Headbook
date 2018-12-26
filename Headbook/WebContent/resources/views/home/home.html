@@ -1,0 +1,36 @@
+<div class="content col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10" ng-controller="homeController" ng-init="init()">
+	<div class="keypads col-md-12 col-sm-12">
+		<div class="new_post">
+			<button ng-click="newPost()">WRITE A NEW POST!</button>
+		</div> 
+	</div>
+	<div class="title"><h1 class="">Posts</h1></div>
+	<div class="col-md-12 " ng-show="showLoader">
+		<div class="loader">
+			<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+		</div>
+	</div>
+	<div id="posts_list" style="display: none">
+		<div class="home_post col-lg-6 col-md-12 col-sm-12" ng-repeat="post in posts | orderBy:'-date'">
+			<div class="header col-md-12" ng-click="showPostDetail(post)">
+				<div class="title">
+					<span>{{post.title}}</span>
+				</div>
+				<div class="creator_info">
+					<img ng-src="{{post.creator.avatar}}"><span>{{post.creator.name}} {{post.creator.surname}}</span>
+				</div>
+			</div>
+			<div class="content col-md-12 col-sm-12" ng-click="showPostDetail(post)">
+				<span ng-if="post.content.length <= 50">{{post.content}}</span>
+				<span ng-if="post.content.length > 50">{{post.content | limitTo : 50 : 0}}...</span>
+			</div>
+			<div class="footer col-md-12 col-sm-12">
+				<div class="likesNumber">
+					<span>{{post.likesNumber}} Likes</span>
+				</div>
+				<button class="like" ng-if="!post.givenLike" ng-click="like(post)"><span style="color:red;">&#x2764;</span> Like</button>
+				<button class="like" ng-if="post.givenLike" disabled>You <span style="color:red;">&#x2764;</span> it!</button>
+			</div>
+		</div>
+	</div>
+</div>

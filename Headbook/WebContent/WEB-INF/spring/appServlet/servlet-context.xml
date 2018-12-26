@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+ 
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	
+<!-- 	CONVERTERS -->
+	<context:component-scan
+		base-package="com.headbook.converters" />
+<!-- 	SERVICES -->
+	<context:component-scan
+		base-package="com.headbook.services" />
+<!-- 	CONTROLLERS -->
+	<context:component-scan
+		base-package="com.headbook.controllers" />
+<!-- 	REST CONTROLLERS -->
+	<context:component-scan
+		base-package="com.headbook.restControllers" />
+<!-- 	HANDLERS -->
+	<context:component-scan
+		base-package="com.headbook.handlers" />
+ 
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	
+	<!-- Database BO -->
+
+	<bean id="sqlSessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+<!-- 		<property name="url" value="jdbc:sqlserver://${headbook.headbook.db.host}:${headbook.headbook.db.port};databasename=${headbook.headbook.db.database}" /> -->
+<!-- 		<property name="username" value="${headbook.headbook.db.user}" /> -->
+<!-- 		<property name="password" value="${headbook.headbook.db.password}" /> -->
+		<property name="url" value="jdbc:sqlserver://${headbook.headbook.db.host}:${headbook.headbook.db.port};databasename=${headbook.headbook.db.database};integratedSecurity=true" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.headbook.db.mappers" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- Transactionalidad -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ 
+ 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<beans:property name="prefix" value="/WEB-INF/jsp/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>	
+
+	<context:property-placeholder
+		location="file://${headbook.headbook.root.path}/conf/headbook-config.properties" />
+
+
+
+</beans>

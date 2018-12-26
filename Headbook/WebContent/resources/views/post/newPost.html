@@ -1,0 +1,26 @@
+<div class="content col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10" ng-controller="postController" ng-init="init('N')">
+	<div class="title col-sm-12"><h1>Create your new post!</h1></div>
+	<form name="postForm" ng-submit="createPost(postForm)">
+		<div class="newPost">
+			<div class="col-xs-12 form_row">
+				<span class="col-xs-12">Title</span>
+				<input placeholder="Your title" class="col-xs-12" type="text" ng-model="post.title" required oninvalid="this.setCustomValidity('Complete this field')"
+ 							oninput="setCustomValidity('')">
+			</div>
+			<div class="col-xs-12 form_row">
+				<span class="col-xs-12">Content</span>
+				<textarea placeholder="Your content" class="col-xs-12" ng-model="post.content" required oninvalid="this.setCustomValidity('Complete this field')"
+ 							oninput="setCustomValidity('')" maxlength="1000"></textarea>
+			</div>			
+		</div>
+		<div class="footer col-xs-12">
+			<div class="back_button">
+				<button class="back" ng-click="back()">BACK</button>
+			</div>
+			<div class="submit_button">
+				<input type="submit" ng-if="mode='N'" value="CREATE" ng-show="!showLoader">
+				<div class="lds-ring" ng-show="showLoader" style="display: none;"><div></div><div></div><div></div><div></div></div>
+			</div>
+		</div>
+	</form>
+</div>

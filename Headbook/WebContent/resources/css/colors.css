@@ -1,0 +1,10 @@
+.red_background{
+	background-color: #ff4646;
+}
+.gradient_blue_background{
+	background-image: linear-gradient(#283e4a , #486e82);
+}
+
+.white_font{
+	color: white;
+}

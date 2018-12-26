@@ -1,0 +1,99 @@
+body>.content>.title{
+	font-size: 50px;
+    padding-bottom: 1rem;
+    border-bottom: 2px #414141 solid;
+}
+.keypads{
+/* 	margin-bottom: 4rem; */
+}
+.keypads .new_post{
+	float: right;
+}
+@media only screen and (max-width: 500px) {
+  .keypads .new_post{
+  	  float: unset;
+	  display: flex;
+	  justify-content: center;
+  }
+}
+.keypads .new_post button {
+	padding: 10px 15px;
+/*   display: inline-block; */
+/*   padding: 10px 14px; */
+/*   font-size: 26px; */
+/*   cursor: pointer; */
+/*   text-align: center; */
+/*   text-decoration: none; */
+/*   outline: none; */
+/*   color: #fff; */
+/*   border: none; */
+/*   border-radius: 10px; */
+/*   background-image: linear-gradient(#30c056 , #7dca41); */
+}
+
+/* .keypads .new_post button:hover { */
+/*   background-image: linear-gradient(#2ea94f , #5c952f); */
+/* } */
+
+/* .keypads .new_post button:active { */
+/*   background-image: linear-gradient(#2ea94f , #5c952f); */
+/* } */
+
+.home_post{
+	margin: 2rem 0;
+	border-radius: 1rem;
+}
+.home_post .header{
+	background-color: #283e4a;
+	color:white;
+	padding: 0.7rem;
+	border-radius: 10px 10px 0 0;
+	display: flow-root;
+	cursor: pointer;
+}
+.home_post .header .title{
+	padding-left: 1%;
+	float: left;
+	margin-left: 0.2rem;
+	font-size: 2rem;
+    font-weight: 600;
+/*     text-transform: uppercase; */
+}
+.home_post .header .creator_info{
+	padding-right: 1%;
+	float: right;
+	margin-right: 0.2rem;
+	margin-top: 0.4rem;
+}
+.home_post .header .creator_info img{
+	height: 20px;
+	border-radius: 10px;
+}
+.home_post .header .creator_info span{
+	margin-left: 8px
+}
+
+.home_post .content {
+	padding: 2rem 1rem;
+    border: 3px #283e4a solid;
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+.home_post .footer{
+	background-color: #283e4a;
+	color:white;
+	border-radius: 0 0 10px 10px;
+	display: flow-root;
+}
+.home_post .footer .likesNumber{
+	float: left;
+	padding-left: 1%;
+}
+.home_post .footer button.like{
+	float: right;
+	color: black;
+	margin-right: 1%;
+	margin-bottom: 3px;
+}
+

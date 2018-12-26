@@ -1,0 +1,26 @@
+header{
+    background-image: linear-gradient(#283e4a , #486e82);
+	color:white;
+}
+
+header>div>div.app_name{
+    font-weight: 600;
+    font-style: italic;
+    font-size: 50px;
+    float: left;
+}
+
+header>div>div.actualUser{
+    float: right;
+    margin: 16px 0;
+    padding: 6px 10px;
+    font-size: 18px;
+    background-color: #c9d2db91;
+}
+header>div>div.actualUser>span{
+    padding-left: 15px;
+}
+header>div>div.actualUser>img{
+	height: 30px;
+    border-radius: 20px
+}
